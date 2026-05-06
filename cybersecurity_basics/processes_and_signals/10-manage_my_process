@@ -2,13 +2,20 @@
 # the script checks the arguments and (start, stop or restart) process of manage_my_process and displays messages, creating/deleting files, killing processes and writing the PID of the last process in background $!
 if [ "$1" = "start" ]
 then
-	./manage_my_process & echo "$!" > /tmp/my_process.pid echo "manage_my_process started"
+	./manage_my_process &
+	echo "$!" > /tmp/my_process.pid
+	echo "manage_my_process started"
 elif [ "$1" = "stop" ]
 then
-        kill "$(cat /tmp/my_process.pid)"  rm /tmp/my_process.pid echo "manage_my_process stopped"
+        kill "$(cat /tmp/my_process.pid)"
+	rm /tmp/my_process.pid
+	echo "manage_my_process stopped"
 elif [ "$1" = "restart" ]
 then
-        kill "$(cat /tmp/my_process.pid)" rm /tmp/my_process.pid ./manage_my_process & echo "$!" > /tmp/my_process.pid echo "manage_my_process restarted"
+        kill "$(cat /tmp/my_process.pid)"
+	rm /tmp/my_process.pid ./manage_my_process &
+	echo "$!" > /tmp/my_process.pid
+	echo "manage_my_process restarted"
 else
         echo "Usage: manage_my_process {start|stop|restart}"
 fi
