@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# The script creates a PID file, prints a string as a loop, catches signals and deleting the PID file and terminating itself.
+echo "$$" > /tmp/myscript.pid
+trap "echo 'I hate the kill command'; rm /tmp/myscript.pid; exit" SIGTERM
+trap "echo 'Y U no love me?!'" SIGINT
+trap "rm /tmp/myscript.pid; exit" SIGQUIT
+while true
+do
+echo "To infinity and beyond"
+sleep 2
+done
