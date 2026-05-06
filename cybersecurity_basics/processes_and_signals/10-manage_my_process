@@ -13,7 +13,8 @@ then
 elif [ "$1" = "restart" ]
 then
         kill "$(cat /tmp/my_process.pid)"
-	rm /tmp/my_process.pid ./manage_my_process &
+	rm /tmp/my_process.pid
+	./manage_my_process &
 	echo "$!" > /tmp/my_process.pid
 	echo "manage_my_process restarted"
 else
