@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# the script displays a string as a loop and pause for 2 seconds before looping again
+while true
+do
+echo "To infinity and beyond"
+sleep 2
+done
