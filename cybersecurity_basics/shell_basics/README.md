@@ -6,4 +6,7 @@ TASK-2: The script lists all files in the current directory including hidden fil
 
 TASK-3: The script return the user to the previous directory with cd - command. 
 
-TASK-4: The script lists all files including hidden files in current directory, parent of current and /boot directory, while single dot (.) refers to current directory and double dots (..) refers to parent directory, similar when we use cd ../ to change working directory one level up
+TASK-4: The script lists all files including hidden files in current directory, parent of current and /boot directory, while single dot (.) refers to current directory and double dots (..) refers to parent directory, similar when we use cd ../ to change working directory one level up.
+
+TASK-5: the script copy cp and update -u all * files ending with .html and  from current directory to the parent.
+
