@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# the script writes a string "I am alive!" every 2 seconds in /tmp/my process
+while true
+do
+	echo "I am alive!" > /tmp/my_process
+	sleep 2
+done
