@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# the script loops a string and then display a string with I'm invisible when catching a SIGTERM signal
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+trap "echo 'I am invincible!!!'" SIGTERM
+done
