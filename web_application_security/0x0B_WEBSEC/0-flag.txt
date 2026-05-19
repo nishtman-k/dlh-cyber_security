@@ -1,3 +1,1 @@
-guest
-admin
 eca925303bd6b6ea12c1aec42618b406
