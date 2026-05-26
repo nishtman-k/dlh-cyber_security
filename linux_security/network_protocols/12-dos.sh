@@ -1,2 +1,2 @@
 #!/bin/bash
-hping3 -S "$1" -p 80 -c 3
+hping3 --flood -S "$1" -p 80
