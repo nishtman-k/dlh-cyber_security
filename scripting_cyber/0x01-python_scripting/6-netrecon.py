@@ -2,9 +2,14 @@
 """Network reconnaissance module"""
 import socket
 import requests
-import dns.resolver
-import dns.exception
 from bs4 import BeautifulSoup
+
+try:
+    import dns.resolver
+    import dns.exception
+    DNS_AVAILABLE = True
+except ImportError:
+    DNS_AVAILABLE = False
 
 
 def dns_recon(domain):
@@ -17,12 +22,13 @@ def dns_recon(domain):
 
     # MX records
     print("\nMX Records:")
-    try:
-        answers = dns.resolver.resolve(domain, 'MX')
-        for answer in answers:
-            print(f"  {answer.preference} {answer.exchange}")
-    except dns.exception.DNSException:
-        print("  No MX records found")
+    if DNS_AVAILABLE:
+        try:
+            answers = dns.resolver.resolve(domain, 'MX')
+            for answer in answers:
+                print(f"  {answer.preference} {answer.exchange}")
+        except dns.exception.DNSException:
+            print("  No MX records found")
 
 
 def web_recon(domain):
