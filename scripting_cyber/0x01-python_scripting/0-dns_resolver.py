@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Module docstring"""
-from socket import gethostbyname, gaierror
+import socket
 
 
 def resolve_domain_to_ipv4(domain: str):
     try:
-        ipv4 = gethostbyname(domain)
+        ipv4 = socket.gethostbyname(domain)
         print(ipv4)
-    except gaierror:
+    except socket.gaierror:
         print(" ")
 
 
