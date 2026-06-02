@@ -5,16 +5,18 @@ import dns.resolver
 import dns.exception
 
 
-def query_dns_records(domain_name: str):
-    record_types = ['A', 'AAAA', 'MX', 'NS', 'SOA', 'TXT']
-    found_record_types = []
+def query_dns_records(domain_name):
+    record_types = ['A', 'AAAA', 'MX', 'NS', 'TXT', 'SOA']
+    results = {}
     for record_type in record_types:
         try:
-            dns.resolver.resolve(domain_name, record_type)
-            found_record_types.append(record_type)
-        except dns.exception.DNSException:
+            answers = dns.resolver.resolve(domain_name, record_type)
+            results[record_type] = answers
+        except (dns.resolver.NoAnswer,
+                dns.resolver.NXDOMAIN,
+                dns.resolver.NoNameservers):
             pass
-    return found_record_types
+    return results
 
 
 if __name__ == "__main__":
