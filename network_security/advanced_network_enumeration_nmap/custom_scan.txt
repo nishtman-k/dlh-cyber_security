@@ -1,0 +1,18 @@
+# Nmap 7.99 scan initiated Sat Aug  1 17:31:01 2026 as: /usr/lib/nmap/nmap --scanflags URGACKPSHRSTSYNFIN -p 80-90 -oN custom_scan.txt digibar.lu
+Nmap scan report for digibar.lu (76.76.21.21)
+Host is up (0.00057s latency).
+
+PORT   STATE    SERVICE
+80/tcp filtered http
+81/tcp filtered hosts2-ns
+82/tcp filtered xfer
+83/tcp filtered mit-ml-dev
+84/tcp filtered ctf
+85/tcp filtered mit-ml-dev
+86/tcp filtered mfcobol
+87/tcp filtered priv-term-l
+88/tcp filtered kerberos-sec
+89/tcp filtered su-mit-tg
+90/tcp filtered dnsix
+
+# Nmap done at Sat Aug  1 17:31:02 2026 -- 1 IP address (1 host up) scanned in 1.50 seconds
