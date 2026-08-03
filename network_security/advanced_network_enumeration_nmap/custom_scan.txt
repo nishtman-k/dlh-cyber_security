@@ -1,4 +1,4 @@
-# Nmap 7.99 scan initiated Sat Aug  1 17:31:01 2026 as: /usr/lib/nmap/nmap --scanflags URGACKPSHRSTSYNFIN -p 80-90 -oN custom_scan.txt digibar.lu
+# Nmap 7.99 scan initiated Sat Aug  1 17:31:01 2026 as: /usr/lib/nmap/nmap --scanflags URGACKPSHRSTSYNFIN -p 80-90 -oN custom_scan.txt target.com
 Nmap scan report for digibar.lu (76.76.21.21)
 Host is up (0.00057s latency).
 
