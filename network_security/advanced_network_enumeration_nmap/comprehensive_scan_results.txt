@@ -1,0 +1,12 @@
+# Nmap 7.99 scan initiated Mon Aug  3 13:34:57 2026 as: /usr/lib/nmap/nmap --script http-vuln-cve2017-5638 --script ssl-enum-ciphers --script ftp-anon -oN comprehensive_scan_results.txt scanme.nmap.org
+Nmap scan report for scanme.nmap.org (45.33.32.156)
+Host is up (2.1s latency).
+Not shown: 995 closed tcp ports (reset)
+PORT      STATE    SERVICE
+22/tcp    open     ssh
+80/tcp    open     http
+646/tcp   filtered ldp
+9929/tcp  open     nping-echo
+31337/tcp open     Elite
+
+# Nmap done at Mon Aug  3 13:35:31 2026 -- 1 IP address (1 host up) scanned in 33.80 seconds
