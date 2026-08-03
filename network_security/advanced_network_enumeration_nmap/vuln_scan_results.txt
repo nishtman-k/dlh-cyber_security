@@ -1,7 +1,6 @@
-# Nmap 7.99 scan initiated Mon Aug  3 12:06:29 2026 as: /usr/lib/nmap/nmap --privileged --script vulners -oN vuln_scan_results.txt http-vuln-cve2017-5638 scanme.nmap.org
-Failed to resolve "http-vuln-cve2017-5638".
+# Nmap 7.99 scan initiated Mon Aug  3 12:10:43 2026 as: /usr/lib/nmap/nmap --privileged --script http-vuln-cve2017-5638 -oN vuln_scan_results.txt scanme.nmap.org
 Nmap scan report for scanme.nmap.org (45.33.32.156)
-Host is up (1.6s latency).
+Host is up (1.8s latency).
 Not shown: 995 closed tcp ports (reset)
 PORT      STATE    SERVICE
 22/tcp    open     ssh
@@ -10,4 +9,4 @@ PORT      STATE    SERVICE
 9929/tcp  open     nping-echo
 31337/tcp open     Elite
 
-# Nmap done at Mon Aug  3 12:07:00 2026 -- 1 IP address (1 host up) scanned in 30.27 seconds
+# Nmap done at Mon Aug  3 12:10:59 2026 -- 1 IP address (1 host up) scanned in 16.64 seconds
