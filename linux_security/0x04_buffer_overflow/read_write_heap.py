@@ -2,8 +2,19 @@
 """Find an ASCII string in the heap of a running process and replace it.
 
 Usage: read_write_heap.py pid search_string replace_string
+
+Silent on success. Set RWH_VERBOSE=1 for diagnostics on stdout.
 """
+import os
 import sys
+
+VERBOSE = os.environ.get("RWH_VERBOSE") is not None
+
+
+def log(message):
+    """Print a diagnostic line only when RWH_VERBOSE is set."""
+    if VERBOSE:
+        print(message)
 
 
 def fail(message):
@@ -49,8 +60,8 @@ def main():
         fail("Usage: replace_string must not be longer than search_string")
 
     start, end, perms = find_heap(pid)
-    print("[*] heap: {:#x}-{:#x} ({} bytes, perms {})"
-          .format(start, end, end - start, perms))
+    log("[*] heap: {:#x}-{:#x} ({} bytes, perms {})"
+        .format(start, end, end - start, perms))
 
     path = "/proc/{}/mem".format(pid)
     try:
@@ -62,14 +73,14 @@ def main():
             if offset == -1:
                 fail("Error: {} not found in the heap".format(search))
             addr = start + offset
-            print("[*] found {} at {:#x} (heap offset {:#x})"
-                  .format(search, addr, offset))
+            log("[*] found {} at {:#x} (heap offset {:#x})"
+                .format(search, addr, offset))
 
             payload = replace + b"\0" * (len(search) - len(replace))
             mem.seek(addr)
             mem.write(payload)
-            print("[*] wrote {} plus {} NUL byte(s) at {:#x}"
-                  .format(replace, len(payload) - len(replace), addr))
+            log("[*] wrote {} plus {} NUL byte(s) at {:#x}"
+                .format(replace, len(payload) - len(replace), addr))
     except PermissionError:
         fail("Error: permission denied on {} (try sudo)".format(path))
     except FileNotFoundError:
