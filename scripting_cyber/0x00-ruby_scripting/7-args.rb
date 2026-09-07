@@ -5,10 +5,12 @@ def print_arguments
   if ARGV.empty?
     puts "No arguments provided."
   else
-    # 2. If not empty, loop through arguments with their index numbers
-    ARGV.each_with_index do |arg, index|
-      # index starts at 0, so we add 1 to display 1, 2, 3...
-      puts "#{index + 1}. #{arg}"
+    # 2. Print the main header required by the checker
+    puts "Arguments:"
+
+    # 3. Loop through and print each argument on a new line
+    ARGV.each do |arg|
+      puts arg
     end
   end
 end
