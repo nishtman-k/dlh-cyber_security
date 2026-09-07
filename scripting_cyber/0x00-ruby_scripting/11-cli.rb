@@ -43,6 +43,8 @@ if options[:add]
   puts "Task '#{options[:add]}' added."
 
 elsif options[:list]
+  puts 'Tasks:'
+
   if File.exist?(TASKS_FILE)
     tasks = File.readlines(TASKS_FILE, chomp: true)
 
