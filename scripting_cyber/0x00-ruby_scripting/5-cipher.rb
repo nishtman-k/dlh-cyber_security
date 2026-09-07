@@ -20,7 +20,7 @@ class CaesarCipher
   private
 
   # 4. Core cipher method that handles both encryption and decryption
-  def cipher(message, shift_value)
+  def cipher(message, shift)
     result = ""
 
     # Split the message into characters and loop through each one
@@ -28,13 +28,13 @@ class CaesarCipher
       if char.match?(/[a-z]/) # If it's a lowercase letter (a-z)
         # Convert letter to number, apply shift, and keep it within a-z bounds
         base = 'a'.ord
-        new_char_code = (char.ord - base + shift_value) % 26 + base
+        new_char_code = (char.ord - base + shift) % 26 + base
         result += new_char_code.chr
 
       elsif char.match?(/[A-Z]/) # If it's an uppercase letter (A-Z)
         # Convert letter to number, apply shift, and keep it within A-Z bounds
         base = 'A'.ord
-        new_char_code = (char.ord - base + shift_value) % 26 + base
+        new_char_code = (char.ord - base + shift) % 26 + base
         result += new_char_code.chr
 
       else
