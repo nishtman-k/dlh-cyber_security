@@ -1,5 +1,3 @@
-#!/bin/bash
-cat <<'EOF'
 Emulation Plan: FIN7 (G0046)
 
 Step 1: Initial Access
@@ -50,4 +48,3 @@ Step 3: Persistence
   - Sysmon Event ID 1 showing execution after user login.
   - EDR alerts for unusual registry-based autorun persistence.
   - SIEM correlation between registry modification and execution.
-EOF
