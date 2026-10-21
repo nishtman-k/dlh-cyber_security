@@ -1,0 +1,43 @@
+## Part A - OpSec Risk Table
+
+| Risk | Likelihood | Impact | Mitigation |
+|---|---|---|---|
+| C2 infrastructure exposure | Medium | High | Use dedicated, client-approved C2 infrastructure and redirectors. Restrict access, secure DNS/TLS configurations, and avoid infrastructure linked to personal accounts. |
+| Operator identity leakage | Medium | High | Never register domains or infrastructure using personal emails, names, or phone numbers. Use organization-controlled accounts and review public registration metadata. |
+| Tool signature detection | High | Medium | Test tools and authorized custom-compiled payloads against AV/EDR in an isolated lab. Establish a detection baseline and document known signatures before the exercise. |
+| Log artifacts left on target systems | High | Medium | Track all created files, processes, and registry changes. Remove only approved test artifacts after the exercise. Never delete or tamper with security/audit logs. |
+
+## Part B - Pre-Engagement OpSec Checklist
+
+**1. Communication Security**
+
+- [ ] Use encrypted communication channels (Signal, Teams, or approved alternatives) for team coordination.
+- [ ] Enable MFA on all operator accounts and establish a separate emergency communication channel.
+- [ ] Never share credentials, sensitive findings, or client information through personal email accounts.
+
+**2. Infrastructure Setup**
+
+- [ ] Set up dedicated, clean C2 servers and redirectors exclusively for the authorized engagement.
+- [ ] Register infrastructure using organization-controlled accounts, never personal identities.
+- [ ] Verify DNS, TLS certificates, firewall restrictions, and public metadata before deployment.
+- [ ] Confirm that every destination IP, domain, and test system is covered by the Rules of Engagement.
+
+**3. Tool Preparation**
+
+- [ ] Compile and test authorized custom payloads in an isolated lab before deployment.
+- [ ] Establish an AV/EDR detection baseline to identify known tool signatures and evaluate approved evasion-testing scenarios safely.
+- [ ] Verify that tools contain no personal identifiers, hardcoded secrets, or unauthorized external connections.
+- [ ] Test emergency stop procedures and verify that payloads and processes can be safely terminated.
+
+**4. Documentation Hygiene**
+
+- [ ] Store exercise evidence and client information only on approved, encrypted storage systems, never personal devices.
+- [ ] Remove personal usernames, email addresses, and identifying metadata from operational files.
+- [ ] Maintain an inventory of deployed tools, temporary accounts, and created artifacts for cleanup.
+- [ ] Follow the client's data retention policy and securely dispose of temporary test data after authorization.
+
+## Part C - Why Red Team OpSec Protects the Client
+
+Red Team operational security is a professional responsibility because poor OpSec can expose the client's systems, sensitive information, and security infrastructure to unnecessary risks. If attackers or the Blue Team discover an exercise prematurely, simulation results may become unreliable because defensive behavior can change once the operation is known. Exposed C2 infrastructure or leaked credentials could also be exploited by real attackers, creating security incidents beyond the exercise's intended scope.
+
+Proper OpSec ensures that testing remains controlled, authorized, and realistic while protecting the client's business operations and reputation. It also demonstrates that the Red Team can conduct professional security assessments without introducing additional threats to the organization.
