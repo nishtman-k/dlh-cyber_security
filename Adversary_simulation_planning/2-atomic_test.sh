@@ -48,13 +48,8 @@ trap 'exit 143' TERM
 echo "Running simulation..."
 
 # Discover local accounts using /etc/passwd
-: > "$RESULTS_FILE"
-
-while IFS= read -r line; do
-    check_stop
-    [[ -n "$line" ]] || continue
-    printf '%s\n' "${line%%:*}" >> "$RESULTS_FILE"
-done < /etc/passwd
+check_stop
+cat /etc/passwd > "$RESULTS_FILE"
 
 check_stop
 
