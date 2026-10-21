@@ -1,0 +1,36 @@
+#!/bin/bash
+# Threat intelligence research - FIN7
+
+Threat Actor Profile: FIN7 (G0046)
+
+Target Sectors:
+- Financial services
+- Retail
+- Restaurants and hospitality
+
+Motivation:
+FIN7 is a financially motivated cybercrime group. Its main objective
+is to generate profit by stealing payment card data and other valuable
+information, as well as conducting ransomware operations.
+
+Key Techniques:
+1. T1566.001: Phishing: Spearphishing Attachment (Initial Access)
+2. T1218.005: System Binary Proxy Execution: Mshta (Defense Evasion)
+3. T1059.001: Command and Scripting Interpreter: PowerShell (Execution)
+
+Associated Tools:
+- Carbanak
+- Cobalt Strike
+- POWER SOURCE (POWERSOURCE)
+
+Known Campaign:
+U.S. Payment Card Theft Campaign (2015-2018):
+FIN7 targeted more than 100 U.S. businesses, primarily restaurants,
+gaming companies, and hospitality organizations, using phishing
+emails and malware. By August 2018, authorities reported the theft
+of over 15 million payment card records from more than 3,600 business
+locations.
+
+Sources:
+- https://attack.mitre.org/groups/G0046/
+- https://www.justice.gov/doj/case/us-v-fedir-oleksiyovych-hladyr-us-v-dmytro-valerievich-fedorov-us-v-andrii-kolpakov-us-v
