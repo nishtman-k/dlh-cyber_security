@@ -1,0 +1,65 @@
+# Purple Team Exercise Report – FIN7
+
+## 1. Detection Rate
+
+Techniques Tested: 5  
+Techniques Detected: 3  
+Techniques Undetected: 2  
+False Positives Generated: 1
+
+**Detection Rate = 3 / 5 × 100 = 60%**
+
+The Blue Team successfully detected 60% of the simulated techniques, leaving 40% undetected. This indicates that existing detection controls provide partial coverage but need improvement against FIN7-related attack behaviors.
+
+## 2. MTTD Assessment
+
+Average MTTD: **32 minutes**
+
+Assessment: **NOT ACCEPTABLE**
+
+Success Target: **15 minutes or less (provisional target)**
+
+The supplied exercise requirements do not specify a numerical MTTD success target. For this assessment, a provisional target of 15 minutes is applied to high-risk financial-sector threat detections.
+
+The observed MTTD of 32 minutes exceeds this target by 17 minutes.
+
+FIN7 is a financially motivated threat group associated with phishing, credential theft, and ransomware operations. Financial institutions require rapid detection to reduce the risk of unauthorized transactions, sensitive data exposure, and disruption to critical services.
+
+According to the CrowdStrike 2026 Global Threat Report, the average cybercriminal breakout time in 2025 was just 29 minutes. Although breakout time and MTTD measure different events, this highlights how quickly attackers can move after initial compromise.
+
+An average detection delay of 32 minutes could therefore leave insufficient time for defenders to intervene before further attacker activity.
+
+External references:
+
+- MITRE ATT&CK FIN7: https://attack.mitre.org/groups/G0046/
+- CrowdStrike 2026 Global Threat Report: https://ir.crowdstrike.com/news-releases/news-release-details/2026-crowdstrike-global-threat-report-ai-accelerates-adversaries
+
+## 3. ATT&CK Coverage Table
+
+| ATT&CK ID | Technique Name | Tested | Detected | MTTD |
+|---|---|---|---|---|
+| T1566.001 | Spearphishing Attachment | Yes | Yes | 18 min |
+| T1059.001 | PowerShell | Yes | Yes | 30 min |
+| T1547.001 | Registry Run Keys / Startup Folder | Yes | No | - |
+| T1087.001 | Local Account Discovery | Yes | Yes | 48 min |
+| T1218.005 | System Binary Proxy Execution: Mshta | Yes | No | - |
+
+**ATT&CK Coverage = 3 / 5 × 100 = 60%**
+
+Average MTTD = (18 + 30 + 48) / 3 = 32 minutes.
+
+Reporting note: The technique assignments, detection outcomes, and individual MTTDs beyond the supplied 18-minute phishing example are illustrative allocations matching the provided exercise totals. They should be replaced with actual test logs before this report is treated as evidence of real detection performance.
+
+## 4. Recommendations Per Undetected Technique
+
+**T1547.001 - Registry Run Keys / Startup Folder**
+
+Implement a SIEM detection rule monitoring Windows Registry Run and RunOnce key modifications using Sysmon Event ID 13 and Windows Security Event ID 4657, where enabled. Generate alerts for suspicious autorun entries and validate detection using controlled persistence simulations.
+
+**T1218.005 - System Binary Proxy Execution: Mshta**
+
+Configure EDR/SIEM monitoring for unusual `mshta.exe` execution using Sysmon Event ID 1 or Windows Security Event ID 4688. Alert when `mshta.exe` executes remote content or launches suspicious child processes such as PowerShell, and verify the rule through authorized lab testing.
+
+## 5. Executive Summary
+
+The Purple Team exercise evaluated five attack techniques associated with the FIN7 threat scenario, and the Blue Team successfully detected three, achieving a 60% detection rate. The average detection time was 32 minutes, exceeding the provisional 15-minute target and leaving important security gaps in persistence and defense-evasion monitoring. We recommend improving detection rules for the two missed techniques, reducing response delays, and repeating the exercise to confirm measurable improvements.
