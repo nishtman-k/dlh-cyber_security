@@ -9,8 +9,8 @@ LOG_FILE="atomic_log.txt"
 # Check whether the simulation must stop
 check_stop() {
     if [[ -e "$STOP_FLAG" ]]; then
-        echo "stop_test.flag detected. Aborting simulation." >&2
-        echo "Remove the flag file to allow execution." >&2
+        echo "stop_test.flag detected. Aborting simulation."
+        echo "Remove the flag file to allow execution."
         exit 1
     fi
 }
