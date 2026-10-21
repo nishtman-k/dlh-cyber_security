@@ -1,0 +1,53 @@
+#!/bin/bash
+cat <<'EOF'
+Emulation Plan: FIN7 (G0046)
+
+Step 1: Initial Access
+- Tactic: Initial Access
+- Technique: T1566.001 — Phishing: Spearphishing Attachment
+- Procedure: In an isolated lab, send a simulated phishing email
+  to a designated test user's mailbox, impersonating a financial
+  institution. Attach a harmless Microsoft Word document named
+  Invoice.docx. The document contains no macros or malicious code.
+  Have the test user open the attachment to simulate FIN7's
+  spearphishing delivery method without compromising the system.
+- Expected Blue Team Visibility:
+  - Email gateway logs showing the sender and attachment.
+  - Mail security alerts or phishing classifications, if triggered.
+  - Attachment metadata and file hash.
+  - Endpoint file creation events when the attachment is saved.
+
+Step 2: Execution
+- Tactic: Execution
+- Technique: T1059.001 — Command and Scripting Interpreter: PowerShell
+- Procedure: On an isolated Windows lab VM, simulate FIN7's use
+  of PowerShell by executing a harmless script that writes
+  "FIN7 Emulation Test" to a local text file. Run the script
+  under a standard test user account. Do not download external
+  payloads, contact command-and-control servers, or execute malware.
+- Expected Blue Team Visibility:
+  - Windows Security Event ID 4688 (process creation), if enabled.
+  - Sysmon Event ID 1 showing powershell.exe execution.
+  - PowerShell Event ID 4104 (script block logging), if enabled.
+  - EDR telemetry recording the process and command line.
+  - PowerShell execution alerts, if detection rules are configured.
+
+Step 3: Persistence
+- Tactic: Persistence
+- Technique: T1547.001 — Boot or Logon Autostart Execution:
+  Registry Run Keys / Startup Folder
+- Procedure: On the same isolated Windows VM, create a temporary
+  registry value under
+  HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+  that launches a harmless local test program at user login.
+  Log out and sign back in to verify that the program runs and
+  writes a timestamp to a local text file. Remove the registry
+  value after testing. No malicious payloads or external
+  connections are involved.
+- Expected Blue Team Visibility:
+  - Sysmon Event ID 13 showing the registry value modification.
+  - Windows Security Event ID 4657, if registry auditing is enabled.
+  - Sysmon Event ID 1 showing execution after user login.
+  - EDR alerts for unusual registry-based autorun persistence.
+  - SIEM correlation between registry modification and execution.
+EOF
