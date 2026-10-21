@@ -1,0 +1,88 @@
+Part A - Safe Simulation Table:
+
+| Behavior | Risk Level | What Is Allowed | What Is Prohibited | Cleanup Steps |
+|----------|------------|-----------------|--------------------|---------------|
+| C2 Beacon | Medium | Send limited test beacons to an approved lab-only C2 simulator using dummy identifiers. | Connecting to real malicious C2 servers, contacting production systems, or sending sensitive data. | Stop the beacon process, remove test configurations, and verify no active connections remain. |
+| Persistence (Registry Run) | Medium | Create a temporary HKCU Run key on an authorized Windows lab VM to launch a harmless test program. | Modifying production registry keys, establishing hidden persistence, or disabling security controls. | Export relevant evidence, delete the test registry value, and verify removal. |
+| Data Exfiltration | High | Transfer a small synthetic dataset to an approved destination inside the isolated lab. | Transferring real customer information, credentials, financial records, or data outside the lab. | Preserve evidence, delete temporary test data and destination copies, and verify cleanup. |
+| Lateral Movement | High | Simulate remote access between two authorized lab VMs using dedicated test accounts. | Accessing production hosts, exploiting unauthorized systems, or spreading malware. | Close test sessions, revoke temporary access, and remove test artifacts. |
+| Credential Access | High | Access dummy credentials stored in a designated lab test file to validate detection. | Dumping real passwords, accessing LSASS, stealing tokens, or collecting production credentials. | Delete temporary credential files, revoke test credentials, and verify no sensitive data remains. |
+
+All activities require written authorization, approved targets,
+a defined testing window, and an isolated lab environment.
+
+Part B - De-confliction Protocol:
+
+1. Point of Contact:
+   When suspicious activity is detected, the Blue Team SOC Lead
+   contacts the designated Exercise Controller through the
+   pre-approved secure communication channel or emergency phone.
+   The Red Team Lead is informed immediately.
+
+2. Validation Process:
+   The Exercise Controller validates the activity against the
+   approved Rules of Engagement, simulation schedule, target list,
+   and activity logs.
+
+   Validation should be completed within 5 minutes. If the
+   activity cannot be confirmed, the simulation remains paused
+   and the incident is escalated.
+
+3. Test Continuation:
+   The Red Team must pause the affected simulation activities
+   immediately during validation.
+
+   Testing resumes only after the Exercise Controller confirms
+   the activity is authorized and explicitly approves continuation.
+
+   The Blue Team may continue investigating the alert normally.
+
+4. Real Incident Discovery:
+   If suspicious activity is confirmed or suspected to be a real
+   security incident, the entire simulation stops immediately.
+
+   The SOC Lead activates the organization's Incident Response
+   Plan and notifies the Incident Response Lead and relevant
+   stakeholders, including Legal when required.
+
+   The Red Team preserves logs and evidence, avoids modifying
+   affected systems, and supports investigators when requested.
+
+   Testing can resume only after written authorization from
+   the client and Exercise Controller.
+
+Part C - Emergency Stop Criteria:
+
+1. Unintended Scope Breach:
+   Immediately stop testing if any simulation activity reaches
+   a system, network, or account outside the approved scope.
+
+2. Production Security Alert:
+   Immediately stop testing if simulation activity triggers
+   an unexpected security alert or response in production.
+
+3. System Instability:
+   Immediately halt testing if any simulation step causes
+   system crashes, service disruption, resource exhaustion,
+   or loss of availability.
+
+4. Real Security Incident:
+   Stop all simulation activities if evidence of an actual
+   compromise, unauthorized access, or unrelated malicious
+   activity is discovered.
+
+5. Loss of Communication:
+   Stop testing if communication with the Exercise Controller
+   is lost or emergency stop instructions cannot be confirmed.
+
+Emergency Stop Procedure:
+- Any Red Team operator, SOC Lead, or Exercise Controller
+  may request an immediate stop.
+- Operators must terminate simulation processes and prevent
+  further actions.
+- Preserve logs, timestamps, and relevant evidence.
+- Notify the Exercise Controller and client security contact.
+- Do not restart without explicit written authorization.
+
+All emergency stop events must be documented in the final
+Purple Team exercise report.
