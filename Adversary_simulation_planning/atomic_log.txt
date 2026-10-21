@@ -2,3 +2,7 @@
 [2026-10-21 14:02:31] END - T1087.001 - Local Account Discovery (exit: 0)
 [2026-10-21 14:07:59] START - T1087.001 - Local Account Discovery
 [2026-10-21 14:07:59] END - T1087.001 - Local Account Discovery (exit: 0)
+[2026-10-21 14:09:49] START - T1087.001 - Local Account Discovery
+[2026-10-21 14:09:49] END - T1087.001 - Local Account Discovery (exit: 0)
+[2026-10-21 14:11:07] START - T1087.001 - Local Account Discovery
+[2026-10-21 14:11:07] END - T1087.001 - Local Account Discovery (exit: 0)
